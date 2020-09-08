@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Step Project Ham</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+    <link rel="stylesheet" href="./css/style.min.css">
 </head>
 <body>
 
@@ -23,25 +22,30 @@
                 <h1 class="logo-text">the<span class="green">Ham</span>
                 </h1>
             </a>
-            <ul class="nav-list">
-                <li><a href="#" class="nav-link">home</a></li>
-                <li><a href="#" class="nav-link">about</a></li>
-                <li><a href="#" class="nav-link">blog</a></li>
-                <li><a href="#" class="nav-link">skills</a></li>
-                <li><a href="#" class="nav-link">service</a></li>
-                <li><a href="#" class="nav-link">work</a></li>
-                <li><a href="#" class="nav-link">testimonials</a></li>
-                <li><a href="#" class="nav-link"><i class="fa fa-search"></i></a></li>
+            <button class="header-nav__btn" id="burger-menu">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+            <ul class="header-nav__menu">
+                <li class="nav-item"><a href="#" class="nav-link">home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">about</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">skills</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">service</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">work</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">testimonials</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-search"></i></a></li>
             </ul>
         </div>
     </div>
-    <div class="header-content">
+    <div class="header-content container">
         <p class="text-string-one">the ham is
             <span class="green">wordpress theme</span></p>
         <p class="text-string-two">we are creative</p>
         <p class="text-string-three">just buy and enjoy these awesome features</p>
     </div>
-    <div class="btn-setting">
+    <div class="btn-setting container">
         <button class="button btn-green">explore now</button>
         <button class="button btn-blue">purchase now</button>
     </div>
@@ -178,7 +182,7 @@
 <!--SECTION-4-->
 <section class="amazing-bg">
     <div class="amazing container">
-        <h3 class="section-title">our services</h3>
+        <h3 class="section-title">our amazing</h3>
         <ul class="amazing-list">
             <li data-filter="all" class="amazing-list-item amazing-list-active">all</li>
             <li data-filter="web-design" class="amazing-list-item">web design</li>
@@ -855,9 +859,8 @@
         <span>&#124 All Rights Reserved</span>
     </p>
 </footer>
-
-<script src="js/jquery-3.5.1.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/index.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="./js/script.min.js"></script>
 </body>
 </html>

@@ -135,7 +135,7 @@ class whackMoleGame {
 
     //Возвращает кто выиграл
     _whoWin() {
-        return this._data.score.human > this._data.score.computer ? 'HUMAN' : 'COMPUTER'
+        return this._data.score.human > this._data.score.computer ? 'ТЫ' : 'КОМПЬЮТЕР'
     }
 
     //Конец игры
@@ -144,7 +144,7 @@ class whackMoleGame {
         this._html.table.removeEventListener('click', this._userTableClickBound);
         const htmlWin = document.createElement('p');
         htmlWin.classList.add('endGameMsg');
-        htmlWin.textContent = `${this._whoWin()} WIN!!!`;
+        htmlWin.textContent = `${this._whoWin()} ВЫИГРАЛ!!!`;
         htmlWin.style.width = this._html.table.offsetWidth + 'px';
         this._html.container.append(htmlWin);
         htmlWin.style.top = this._html.table.offsetTop + this._html.table.offsetHeight / 2 - htmlWin.offsetHeight / 2 + 'px'
@@ -196,7 +196,7 @@ class whackMoleGame {
         this._html.container.classList.add('whack-Mole-Game');
         //***Кнопка новой игры
         this._html.btnNewGame = document.createElement('button');
-        this._html.btnNewGame.innerText = 'Начать новую игру';
+        this._html.btnNewGame.innerText = 'НОВАЯ ИГРА';
         this._html.btnNewGame.classList.add('whack-Mole-Game__btn');
         // this.html._btnNewGame.addEventListener('click', this.onFieldClick.bind(this));
         this._html.container.append(this._html.btnNewGame);

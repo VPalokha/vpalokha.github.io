@@ -22,7 +22,7 @@ export default class Form {
       this.submit.addEventListener("click", async (event) => {
          event.preventDefault();
          const newCardOut = this.collectData(),
-            modal = document.querySelector(".header__modalWrapper");
+            modal = document.querySelector(".header__modal-wrapper");
          if (this.isDataFilled(newCardOut)) {
             if (!modal.dataset.id) {
                const newCardIn = await createCard(newCardOut).then(r => r.json());

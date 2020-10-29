@@ -1,16 +1,12 @@
-"use strict";
+import {search} from "./search.js";
+import {renderCards} from "./cards/cards.js";
+import {token} from "./modal/ModalLogIN.js";
 
-var _search = require("./search.js");
+const container = document.getElementById("container");
+const formContainer = document.querySelector(".section");
 
-var _cards = require("./cards/cards.js");
-
-var _ModalLogIN = require("./modal/ModalLogIN.js");
-
-var container = document.getElementById("container");
-var formContainer = document.querySelector(".section");
-
-if (_ModalLogIN.token) {
-  (0, _cards.renderCards)(container);
+if (token) {
+  renderCards(container);
 }
 
-(0, _search.search)(formContainer, container);
+search(formContainer, container);

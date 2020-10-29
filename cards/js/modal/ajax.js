@@ -1,80 +1,69 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getLogin = getLogin;
-exports.createCard = createCard;
-exports.deleteCard = deleteCard;
-exports.editCard = editCard;
-exports.getCards = getCards;
-exports.API = void 0;
-
-var _ModalLogIN = require("./ModalLogIN.js");
-
 // Файл с фетч-запросами для авторизации getLogin, создания карт createCard, удаления карт deleteCard, редактирования карт editCard, получения масссива карт getCards
-var API = 'https://ajax.test-danit.com/api/cards/';
-exports.API = API;
+import {token} from "./ModalLogIN.js";
 
-function getLogin(email, password) {
-  return fetch("".concat(API, "login"), {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email: email,
-      password: password
+export const API = 'https://ajax.test-danit.com/api/cards/';
+
+export function getLogin(email, password) {
+    return fetch(`${API}login`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
     })
-  });
 }
 
-function createCard(card) {
-  return fetch("".concat(API), {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: "Bearer ".concat(_ModalLogIN.token)
-    },
-    body: JSON.stringify(card)
-  });
+export function createCard(card) {
+    return fetch(`${API}`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(card)
+    })
 }
 
-function deleteCard(id) {
-  return fetch("".concat(API).concat(id), {
-    method: "DELETE",
-    mode: "cors",
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: "Bearer ".concat(_ModalLogIN.token)
-    }
-  });
+export function deleteCard(id) {
+    return fetch(`${API}${id}`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    })
 }
 
-function editCard(newCard, cardId) {
-  return fetch("".concat(API, "/").concat(cardId), {
-    method: "PUT",
-    mode: "cors",
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: "Bearer ".concat(_ModalLogIN.token)
-    },
-    body: JSON.stringify(newCard)
-  });
+export function editCard(newCard, cardId) {
+    return fetch(`${API}/${cardId}`, {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(newCard)
+    })
 }
 
-function getCards() {
-  return fetch("".concat(API), {
-    method: "GET",
-    mode: "cors",
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: "Bearer ".concat(_ModalLogIN.token)
-    }
-  });
-} // export const API = 'https://ajax.test-danit.com/api/cards';
+export function getCards() {
+    return fetch(`${API}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
+// export const API = 'https://ajax.test-danit.com/api/cards';
 // const token = sessionStorage.getItem('token');
 //
 // const headers = {

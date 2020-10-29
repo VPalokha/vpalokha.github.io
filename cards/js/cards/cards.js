@@ -1,53 +1,51 @@
-"use strict";
+import { getCards } from "../modal/ajax.js";
+import { Visit, VisitCardiologist, VisitDentist, VisitTherapist } from "./Visit.js";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.renderCards = renderCards;
-
-var _ajax = require("../modal/ajax.js");
-
-var _Visit = require("./Visit.js");
 
 // Функция для отрисовки карточек визитов, находящихся в сервере
-function renderCards(container) {
-  // получение массива визитов с сервера
-  (0, _ajax.getCards)().then(function (c) {
-    return c.json();
-  }).then(function (arrVisitsFromServer) {
-    // console.log(visits);
-    // Вывод сообщения, если визиты не запланированы
-    if (arrVisitsFromServer.length === 0) {
-      var noItem = document.createElement('p');
-      noItem.innerText = "No item has been added";
-      noItem.id = "empty";
-      container.append(noItem);
-    } else {
-      // Создание массива карточек
-      var visitsObjects = arrVisitsFromServer.map(function (visit) {
-        if (visit.content.doctor === "Стоматолог") {
-          var visitCard = new _Visit.VisitDentist(visit); // отрисовка карточки в ДОМе
+export function renderCards(container) {
 
-          visitCard.render(container);
-          return visitCard;
-        } else if (visit.content.doctor === "Кардиолог") {
-          var _visitCard = new _Visit.VisitCardiologist(visit);
+    // получение массива визитов с сервера
+    getCards().then(c => c.json())
 
-          _visitCard.render(container);
+        .then(arrVisitsFromServer => {
+            // console.log(visits);
 
-          return _visitCard;
-        } else if (visit.content.doctor === "Терапевт") {
-          var _visitCard2 = new _Visit.VisitTherapist(visit);
+            // Вывод сообщения, если визиты не запланированы
+            if (arrVisitsFromServer.length === 0) {
+                const noItem = document.createElement('p');
+                noItem.innerText = "No item has been added";
+                noItem.id = "empty";
+                container.append(noItem);
+            } else {
 
-          _visitCard2.render(container);
+                // Создание массива карточек
+                let visitsObjects = arrVisitsFromServer.map(visit => {
+                    if (visit.content.doctor === "Стоматолог") {
 
-          return _visitCard2;
-        }
-      });
-      return visitsObjects;
-    }
-  });
-} // демо-функция для вывода в консоль массива визитов с сервера
+                        const visitCard = new VisitDentist(visit);
+
+                        // отрисовка карточки в ДОМе
+                        visitCard.render(container);
+                        return visitCard;
+                    } else if (visit.content.doctor === "Кардиолог") {
+                        const visitCard = new VisitCardiologist(visit);
+                        visitCard.render(container);
+                        return visitCard;
+                    } else if (visit.content.doctor === "Терапевт") {
+                        const visitCard = new VisitTherapist(visit);
+                        visitCard.render(container);
+                        return visitCard;
+                    }
+                });
+                return visitsObjects;
+            }
+
+        });
+
+}
+
+// демо-функция для вывода в консоль массива визитов с сервера
 // async function show() {
 //     let resp = await fetch(`https://ajax.test-danit.com/api/cards/`, {
 //         method: "GET",

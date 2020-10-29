@@ -1,57 +1,42 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 // Создаем базовую модальную форму
-var Modal = /*#__PURE__*/function () {
-  function Modal() {
-    _classCallCheck(this, Modal);
-
-    this.element = {
-      modalWrapper: document.createElement('div'),
-      modalWindow: document.createElement('div'),
-      btnClose: document.createElement('span'),
-      btnSubmit: document.createElement('button')
-    };
-  } // Отрисовываем мобальную форму в header
-
-
-  _createClass(Modal, [{
-    key: "render",
-    value: function render() {
-      var parent = document.querySelector('.header');
-      var modalWrapper = this.element.modalWrapper;
-      var btnClose = this.element.btnClose;
-      btnClose.innerHTML = "&times;";
-      this.element.btnSubmit.type = 'submit';
-      this.element.btnSubmit.textContent = 'Войти';
-      modalWrapper.className = 'header__modal-wrapper';
-      this.element.modalWindow.className = 'header__modal';
-      this.element.btnSubmit.className = 'header__btn-submit';
-      btnClose.className = 'header__modal-close';
-      this.element.modalWindow.append(btnClose, this.element.btnSubmit);
-      modalWrapper.append(this.element.modalWindow);
-      parent.append(modalWrapper); // Обработчик вне модального окна или на btnClose , удаляет модальную форму
-
-      document.addEventListener('click', function (event) {
-        if (event.target === modalWrapper || event.target === btnClose) {
-          modalWrapper.remove();
-        }
-      });
+export default class Modal {
+    constructor() {
+        this.element = {
+            modalWrapper: document.createElement('div'),
+            modalWindow: document.createElement('div'),
+            btnClose: document.createElement('span'),
+            btnSubmit: document.createElement('button'),
+        };
     }
-  }]);
 
-  return Modal;
-}(); // import {API} from './ajax.js';
+// Отрисовываем мобальную форму в header
+    render() {
+        const parent = document.querySelector('.header');
+        const modalWrapper = this.element.modalWrapper;
+        const btnClose = this.element.btnClose;
+        btnClose.innerHTML = "&times;";
+        this.element.btnSubmit.type = 'submit';
+        this.element.btnSubmit.textContent = 'Войти';
+        modalWrapper.className = 'header__modal-wrapper';
+        this.element.modalWindow.className = 'header__modal';
+        this.element.btnSubmit.className = 'header__btn-submit';
+        btnClose.className = 'header__modal-close';
+        this.element.modalWindow.append(btnClose, this.element.btnSubmit);
+        modalWrapper.append(this.element.modalWindow);
+        parent.append(modalWrapper);
+
+// Обработчик вне модального окна или на btnClose , удаляет модальную форму
+        document.addEventListener('click', (event) => {
+            if (event.target === modalWrapper || event.target === btnClose) {
+                modalWrapper.remove();
+            }
+
+        });
+    }
+
+}
+
+// import {API} from './ajax.js';
 //
 // export class Modal {
 //     constructor(email, password, submitBtn) {
@@ -144,6 +129,3 @@ var Modal = /*#__PURE__*/function () {
 // loginBtn.addEventListener('click', (e) => {
 //     modal.eventListenerGetLogin();
 // });
-
-
-exports["default"] = Modal;

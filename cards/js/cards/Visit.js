@@ -1,5 +1,3 @@
-import Select from "../forms/Select.js";
-import {fieldsForm} from "../forms/FieldsForm.js";
 import ModalForm from "../modal/ModalForm.js";
 import {deleteCard} from "../modal/ajax.js";
 
@@ -59,7 +57,7 @@ export class Visit {
             event.target.value = event.target.childNodes[0].outerText;
             form.ifEditModal(this.id);
             form.render();
-        })
+        });
 
         //Кнопка удаления карточки 
         this.elem.deleteBtn.addEventListener("click", async (event)=>{
@@ -76,7 +74,7 @@ export class Visit {
                 }
             }
             location.reload();
-        })
+        });
         this.elem.self.append(this.elem.fullName, this.elem.doctor, this.elem.showMoreBtn, this.elem.hideBtn, this.elem.editBtn, this.elem.deleteBtn);
     }
 }

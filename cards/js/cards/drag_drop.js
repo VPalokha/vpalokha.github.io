@@ -8,6 +8,7 @@ container.addEventListener(`dragend`, (evt) => {
   evt.target.classList.remove(`selected`);
 });
 
+
 container.addEventListener(`dragover`, (evt) => {
   // Разрешаем сбрасывать элементы в эту область
   evt.preventDefault();

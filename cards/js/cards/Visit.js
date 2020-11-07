@@ -1,3 +1,5 @@
+import Select from "../forms/Select.js";
+import {fieldsForm} from "../forms/FieldsForm.js";
 import ModalForm from "../modal/ModalForm.js";
 import {deleteCard} from "../modal/ajax.js";
 
@@ -52,18 +54,15 @@ export class Visit {
         this.elem.self.dataset.id = this.id;
 
         //Кнопка редактирования карточки
-        this.elem.editBtn.addEventListener("click", async (event) => {
+        this.elem.editBtn.addEventListener("click", async(event)=>{
             const form = new ModalForm();
             event.target.value = event.target.childNodes[0].outerText;
             form.ifEditModal(this.id);
-            const {doctor, purpose, desc, priority, age, id, pressure, weightIndex, heartIllness, fullName, lastDateVisit} = this;
-            form.edit(doctor, purpose, desc, priority, age, id, pressure, weightIndex, heartIllness, fullName, lastDateVisit);
             form.render();
-            document.querySelectorAll(".form__select")[1].remove()
-        });
+        })
 
         //Кнопка удаления карточки 
-        this.elem.deleteBtn.addEventListener("click", async (event) => {
+        this.elem.deleteBtn.addEventListener("click", async (event)=>{
             const response = await deleteCard(this.id);
 
             if (response.status === "Success") {
@@ -77,7 +76,7 @@ export class Visit {
                 }
             }
             location.reload();
-        });
+        })
         this.elem.self.append(this.elem.fullName, this.elem.doctor, this.elem.showMoreBtn, this.elem.hideBtn, this.elem.editBtn, this.elem.deleteBtn);
     }
 }
@@ -88,7 +87,6 @@ export class VisitDentist extends Visit {
         super(visit);
         this.lastDateVisit = visit.content.lastDateVisit;
     }
-
 //Отрисовка Дантиста на главной странице
     render(parent) {
         super.render(parent);
@@ -129,7 +127,6 @@ export class VisitDentist extends Visit {
         this.elem.showMoreBtn.style.display = 'none';
         this.elem.hideBtn.style.display = 'inline-block';
     }
-
 //Кнопка для скрытия информации Дантиста
     hide() {
         this.elem.self.removeChild(this.elem.purpose);
@@ -171,8 +168,7 @@ export class VisitTherapist extends Visit {
             return this.elem.self;
         }
     }
-
-//Кнопка для отрисовки дополнительной информации Дантиста
+//Кнопка для отрисовки дополнительной информации Дантиста   
     showMore() {
         const moreInfo = [];
 

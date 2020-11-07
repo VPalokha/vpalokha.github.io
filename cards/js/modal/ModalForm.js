@@ -7,9 +7,11 @@ import Modal from "./Modal.js";
 // Модифицируем модальную форму для выбора врача
 export default class ModalForm extends Modal {
     constructor() {
-        super()
+        super();
+        debugger
         this.doctor = new Select(["Выберите врача", "Кардиолог", "Стоматолог", "Терапевт"]).create();
     }
+
 // Отрисовываем мобальную форму, плюс обработчик на селектор выбора врача
     render() {
         super.render();
@@ -21,6 +23,7 @@ export default class ModalForm extends Modal {
         this.element.btnSubmit.remove();
         this.element.modalWindow.insertBefore(this.doctor, this.element.btnClose);
     }
+
 // Проверка на существование открытой формы по другому врачу, если есть, удаляется, после этого отрисовывается форма по выбранному врачу
     checkAndPutForm(newForm, existForm) {
         if (existForm) {
@@ -47,6 +50,22 @@ export default class ModalForm extends Modal {
         }
     }
 
+    edit(doctor, purpose, desc, priority, age, id, pressure, weightIndex, heartIllness, fullName, lastDateVisit) {
+        const exist = this.element.modalWindow.children[2];
+
+
+        if (doctor === "Кардиолог") {
+            const form = new FormCardiologist(doctor, purpose, desc, priority, age, id, pressure, weightIndex, heartIllness, fullName);
+            this.checkAndPutForm(form, exist);
+        } else if (doctor === "Стоматолог") {
+            const form = new FormDentist(doctor, purpose, desc, priority, age, id, pressure, weightIndex, heartIllness, fullName, lastDateVisit);
+            this.checkAndPutForm(form, exist);
+        } else if (doctor === "Терапевт") {
+            const form = new FormTherapist(doctor, purpose, desc, priority, age, id, pressure, weightIndex, heartIllness, fullName, lastDateVisit);
+            this.checkAndPutForm(form, exist);
+        }
+    }
+
     ifEditModal(id) {
         this.element.modalWindow.dataset.id = id;
         this.element.modalWrapper.dataset.id = id;
@@ -59,4 +78,4 @@ btn.addEventListener("click", () => {
 
     const modal = new ModalForm();
     modal.render();
-})
+});

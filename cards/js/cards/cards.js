@@ -1,6 +1,5 @@
 import { getCards } from "../modal/ajax.js";
-import { Visit, VisitCardiologist, VisitDentist, VisitTherapist } from "./Visit.js";
-
+import {VisitCardiologist, VisitDentist, VisitTherapist } from "./Visit.js";
 
 // Функция для отрисовки карточек визитов, находящихся в сервере
 export function renderCards(container) {
@@ -40,24 +39,5 @@ export function renderCards(container) {
                 });
                 return visitsObjects;
             }
-
         });
-
 }
-
-// демо-функция для вывода в консоль массива визитов с сервера
-// async function show() {
-//     let resp = await fetch(`https://ajax.test-danit.com/api/cards/`, {
-//         method: "GET",
-//         mode: "cors",
-//         headers: {
-//             'Content-Type': 'application/json',
-//             Authorization: "Bearer c7b63993-0bf1-4782-b26e-e55f7bc62e3d"
-//         }
-//     });
-//     let visits = await resp.json();
-//     visits.forEach((item) => {
-//         console.log(item)
-//     })
-// }
-// show();

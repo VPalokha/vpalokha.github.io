@@ -3,3 +3,4 @@
 ## `3` [Step Project FORKIO](https://vpalokha.github.io/forkio)
 ## `4` [Whack A Mole](https://vpalokha.github.io/whack_a_mole)
 ## `5` [Step Project CARDS](https://vpalokha.github.io/cards)
+## `6` [Hair](https://vpalokha.github.io/hair)
